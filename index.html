@@ -24,7 +24,6 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-            border: 20px;
         }
 
         #nin-display {
@@ -40,6 +39,7 @@
         <h1>Random Uganda National Identification Number (NIN) Generator</h1>
         <button id="generate-btn">Generate NIN</button>
         <p id="nin-display"></p>
+        <button id="copy-btn" style="display: none;">©️📎🇨🇵🎦</button>
     </div>
     <script>
         document.getElementById('generate-btn').addEventListener('click', generateNIN);
@@ -53,7 +53,24 @@
                                  letters[Math.floor(Math.random() * letters.length)] +
                                  letters[Math.floor(Math.random() * letters.length)];
             const nin = `${randomPrefix}${randomDigits}${randomLetters}`;
-            document.getElementById('nin-display').textContent = `UGANDAN NIN: ${nin}`;
+            const ninDisplay = document.getElementById('nin-display');
+            ninDisplay.textContent = `Generated NIN: ${nin}`;
+            
+            const copyBtn = document.getElementById('copy-btn');
+            copyBtn.style.display = 'block';
+            copyBtn.addEventListener('click', function() {
+                copyToClipboard(nin);
+            });
+        }
+
+        function copyToClipboard(text) {
+            const el = document.createElement('textarea');
+            el.value = text;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            alert('NIN copied to clipboard!');
         }
     </script>
 </body>
