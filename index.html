@@ -13,6 +13,8 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
+            color: blue;
+            back-ground: indigo;
         }
 
         .container {
@@ -39,7 +41,7 @@
         <h1>Random Uganda National Identification Number (NIN) Generator</h1>
         <button id="generate-btn">Generate NIN</button>
         <p id="nin-display"></p>
-        <button id="copy-btn" style="display: none;">©️📎🇨🇵🎦</button>
+        <button id="copy-btn" style="display: none;">copie</button>
     </div>
     <script>
         document.getElementById('generate-btn').addEventListener('click', generateNIN);
@@ -70,7 +72,7 @@
             el.select();
             document.execCommand('copy');
             document.body.removeChild(el);
-            alert('NIN copied to clipboard!');
+            alert('NIN coopied successfully!');
         }
     </script>
 </body>
