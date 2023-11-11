@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Uganda NIN Generator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 20px;
+        }
+
+        #nin-display {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Random Uganda National Identification Number (NIN) Generator</h1>
+        <button id="generate-btn">Generate NIN</button>
+        <p id="nin-display"></p>
+    </div>
+    <script>
+        document.getElementById('generate-btn').addEventListener('click', generateNIN);
+
+        function generateNIN() {
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const prefixes = ['CM', 'CF'];
+            const randomPrefix = prefixes[Math.floor(Math.random() * prefixes.length)];
+            const randomDigits = Math.floor(Math.random() * 1000000000).toString().padStart(9, '0');
+            const randomLetters = letters[Math.floor(Math.random() * letters.length)] +
+                                 letters[Math.floor(Math.random() * letters.length)] +
+                                 letters[Math.floor(Math.random() * letters.length)];
+            const nin = `${randomPrefix}${randomDigits}${randomLetters}`;
+            document.getElementById('nin-display').textContent = `UGANDAN NIN: ${nin}`;
+        }
+    </script>
+</body>
+
+</html>
